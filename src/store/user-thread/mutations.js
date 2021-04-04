@@ -16,3 +16,7 @@ export function SET_USER(state, payload) {
 export function CLEAR_USERS(state) {
   state.users = [];
 }
+
+export function CLEAR_USER(state) {
+  state.user = {};
+}

@@ -43,13 +43,21 @@ export function handleAuthStateChange({ commit, dispatch, getters }) {
       dispatch("users/fetchUsers", {}, { root: true });
       this.$router.push("/users");
     } else {
-      dispatch("dbUpdateUser", {
-        id: getters["getUserId"],
-        updates: { online: false }
-      });
-      commit("CLEAR_USER");
-      dispatch("users/removeUsers", {}, { root: true });
-      this.$router.push("/auth");
+      let id = getters["getUserId"];
+      if (id) {
+        console.log(id);
+        dispatch("dbUpdateUser", {
+          id: getters["getUserId"],
+          updates: { online: false }
+        });
+        commit("CLEAR_USER");
+        dispatch("users/removeUsers", {}, { root: true });
+        this.$router.push("/auth");
+      } else {
+        console.log("triggered");
+        dispatch("users/removeUsers", {}, { root: true });
+        commit("CLEAR_USER");
+      }
     }
   });
 }

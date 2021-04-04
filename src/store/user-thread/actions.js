@@ -15,4 +15,5 @@ export function setUser({ commit }, payload) {
 
 export function removeUsers({ commit }) {
   commit("CLEAR_USERS");
+  commit("CLEAR_USER");
 }

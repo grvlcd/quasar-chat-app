@@ -1,5 +1,9 @@
 export function getUser(state) {
-  return state.user != null;
+  return (
+    state.user &&
+    Object.keys(state.user).length === 0 &&
+    state.user.constructor === Object
+  );
 }
 
 export function getUserDetails(state) {

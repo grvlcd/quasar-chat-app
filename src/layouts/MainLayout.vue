@@ -17,7 +17,7 @@
           {{ $route.params.id ? user.name : $route.name }}
         </q-toolbar-title>
         <q-btn
-          v-if="!getUser"
+          v-if="getUser"
           to="/auth"
           class="absolute-right q-pr-sm"
           no-caps
